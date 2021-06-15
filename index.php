@@ -1,21 +1,20 @@
 <?php
+
 ini_set( 'display_errors', 1 );
 error_reporting(E_ALL);
 
-//$type = "test";
-if(isset($_POST['type'])) $type = $_POST['type'];
-if(isset($_POST['data'])) $data = $_POST['data'];
+include "class.php";
+$main = new _main_;
+if (isset($_POST['type'])) $Type = $_POST['type'];
+if (isset($_POST['data'])) $Data = $_POST['data'];
 
-if(isset($type))
-{
-//    $data = "testdata";
-
-    $db_host = "localhost";
-    $db_user = "root";
-    $db_password = "";
-    $db_name = "testdb";
-
-    $db = new PDO("mysql:host=" . $db_host . ";dbname=" . $db_name, $db_user, $db_password);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $db->exec("insert into data_table (name, age) values ('" . $data . "', 43)");
+if (isset($Type)) {
+    switch (strip_tags($Type)) {
+        case "t_insert_data":
+            $main->InsertData($Data);
+            break;
+        case "t_get_data":
+            $main->GetData();
+            break;
+    }
 }
