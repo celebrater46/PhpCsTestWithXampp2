@@ -12,7 +12,7 @@ class _main_ extends database
         if (empty($data)) {
             die('{"result":"failed"}');
         } else {
-            $query = $this->db->prepare("INSERT INTO data_table (data) VALUES ('$data')");
+            $query = $this->db->prepare("INSERT INTO data_table (name, age) VALUES ('$data', 28)");
             $query->execute();
 
             die('{"result":"success"}');
@@ -27,7 +27,7 @@ class _main_ extends database
 
         if (isset($result)) {
             $data = $result["data"];
-            die('{"result":"success", "data":"' . $data . '"}');
+            die('{"result":"success", "name":"' . $data . '"}');
         } else {
             die('{"result":"failed"}');
         }
