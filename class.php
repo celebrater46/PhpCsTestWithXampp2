@@ -26,7 +26,7 @@ class _main_ extends database
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
         if (isset($result)) {
-            $data = $result["data"];
+            $data = $result["name"];
             die('{"result":"success", "name":"' . $data . '"}');
         } else {
             die('{"result":"failed"}');
